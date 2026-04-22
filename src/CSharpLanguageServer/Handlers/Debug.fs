@@ -14,7 +14,7 @@ module Debug =
             match wf.Solution with
             | Uninitialized -> "Uninitialized", None
             | Loading _ -> "Loading", None
-            | Ready(_, solution) -> "Ready", Some solution.FilePath
+            | Loaded(_, solution) -> "Loaded", Some solution.FilePath
             | Defunct _ -> "Defunct", None
 
         { uri = wf.Uri
