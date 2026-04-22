@@ -195,7 +195,7 @@ let processServerEvent state postServerEvent (inbox: MailboxProcessor<ServerEven
         wsUpdate.PhaseTransition
         |> Option.iter (fun phase ->
             match phase with
-            | LspWorkspacePhase.Initializing -> postServerEvent ClientInitialize
+            | LspWorkspacePhase.Configured -> postServerEvent ClientInitialize
             | LspWorkspacePhase.ShuttingDown -> postServerEvent ClientShutdown
             | _ -> ())
 
@@ -277,7 +277,7 @@ let processServerEvent state postServerEvent (inbox: MailboxProcessor<ServerEven
 
         let updatedWorkspace =
             { state.Workspace with
-                Phase = LspWorkspacePhase.Initializing }
+                Phase = LspWorkspacePhase.Configured }
 
         return
             { state with
